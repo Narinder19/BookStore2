@@ -113,8 +113,6 @@ public class AddBookActivity extends AppCompatActivity implements LoaderManager.
         mDecrease.setOnTouchListener(onTouchListener);
 
         if (checkPermission_MANAGE_DOCUMENT()) {
-
-
             mBookImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
