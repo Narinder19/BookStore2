@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">BookStore</string>
+
+
+    <string name="action_save">Save</string>
+    <string name="hint_book_name">Name</string>
+    <string name="hint_book_price">Price</string>
+    <string name="hint_book_quantity">Quantity</string>
+    <string name="hint_book_supplier_name">Supplier Name</string>
+    <string name="hint_book_category">Book Category</string>
+    <string name="hint_book_supplier_phone_number">Phone</string>
+
+    <string name="category_overview">Overview</string>
+
+    <string name="book_category_unknown">Unknown</string>
+    <string name="book_category_fiction">Fiction</string>
+    <string name="book_category_history">History</string>
+    <string name="book_category_technology">Technology</string>
+    <string name="table_header">ID-Name-Price-QTY-Category-SupName-SupPhone</string>
+    <string name="empty_view_title_text">Empty Book Store.</string>
+    <string name="empty_view_subtitle_text">Add books to Book Store by click on the book icon in the bottom right corner. Book name ,price, and supplier name are required fields. To change book image click on the image.</string>
+    <string name="Add_Book_Activity_Title">Add a Book</string>
+    <string name="Edit_Book_Activity_Title">Edit Books</string>
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep Editing</string>
+    <string name="insert_book_failed">New book insert failed.</string>
+    <string name="insert_book_successful">Book insert  was successful.</string>
+    <string name="update_book_failed">Book update failed.</string>
+    <string name="update_book_successful">Updated  %d books.</string>
+    <string name="action_delete">Delete</string>
+    <string name="delete_book_failed">Can not delete book.</string>
+    <string name="delete_book_successful">Deleted book.</string>
+    <string name="currency_symbol">Price $%s</string>
+    <string name="quantity_string">Quantity: %s</string>
+    <string name="sale_button_text">SALE</string>
+    <string name="quantity_text_view">Quantity</string>
+    <string name="price_text_view">Price</string>
+    <string name="name_text_view">Name</string>
+    <string name="category_text_view">Category</string>
+    <string name="supplier_name_text_view">Supplier Name</string>
+    <string name="supplier_phone_text_view">Supplier Phone</string>
+    <string name="contact_supplier">Contact Supplier</string>
+</resources>

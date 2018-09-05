@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#344955</color>
+    <color name="colorPrimaryDark">#232F34</color>
+    <color name="colorAccent">#F9AA33</color>
+
+    <color name="light_row_background">#F7F7FF</color>
+    <color name="dark_row_background">#BDD5EA</color>
+    <color name="book_icon_background">#9abecc</color>
+    <color name="button_background">#969696</color>
+    <color name="book_name_text">#000</color>
+
+</resources>

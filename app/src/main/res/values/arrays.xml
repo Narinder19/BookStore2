@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="book_categories">
+        <item>@string/book_category_unknown</item>
+        <item>@string/book_category_fiction</item>
+        <item>@string/book_category_history</item>
+        <item>@string/book_category_technology</item>
+    </string-array>
+</resources>
