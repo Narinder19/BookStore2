@@ -60,7 +60,7 @@ public class BookCursorAdapter extends CursorAdapter {
                 values.put(BookEntry.COLUMN_BOOK_QUANTITY, quantity);
                 Uri updateUri = ContentUris.withAppendedId(BookEntry.CONTENT_URI, bookId);
                 context.getContentResolver().update(updateUri, values, null, null);
-                Toast.makeText(context, "Sold one " + bookName, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Sold one " + bookName , Toast.LENGTH_SHORT).show();
             }
         });
 

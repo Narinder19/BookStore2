@@ -43,11 +43,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-
 public class AddBookActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String LOG_TAG = AddBookActivity.class.getSimpleName();
     private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 0;
+    private static final int PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 0;
     private static final int IMAGE_GALLERY_REQUEST = 20;
     private BookDbHelper mDbHelper;
     private boolean Error;
@@ -112,30 +112,56 @@ public class AddBookActivity extends AppCompatActivity implements LoaderManager.
         mIncrease.setOnTouchListener(onTouchListener);
         mDecrease.setOnTouchListener(onTouchListener);
 
-        mBookImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                Intent intent;
+        if (checkPermission_MANAGE_DOCUMENT()) {
 
-                if (Build.VERSION.SDK_INT < 19) {
-                    intent = new Intent(Intent.ACTION_GET_CONTENT);
-                } else {
-                    intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                    intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+            mBookImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent;
+
+                    if (Build.VERSION.SDK_INT < 19) {
+                        intent = new Intent(Intent.ACTION_GET_CONTENT);
+                    } else {
+                        intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                        intent.addCategory(Intent.CATEGORY_OPENABLE);
+                    }
+
+                    File publicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+                    String pictureDirectoryPath = publicDirectory.getPath();
+                    Uri data = Uri.parse(pictureDirectoryPath);
+
+                    intent.setDataAndType(data, "image/*");
+                    startActivityForResult(intent, IMAGE_GALLERY_REQUEST);
                 }
-
-                File publicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-                String pictureDirectoryPath = publicDirectory.getPath();
-                Uri data = Uri.parse(pictureDirectoryPath);
-
-                intent.setDataAndType(data, "image/*");
-                startActivityForResult(intent, IMAGE_GALLERY_REQUEST);
-            }
-        });
-
+            });
+        }
         mDbHelper = new BookDbHelper(this);
         setupSpinner();
+    }
+
+    private boolean checkPermission_MANAGE_DOCUMENT() {
+        if (Build.VERSION.SDK_INT < 19) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.MANAGE_DOCUMENTS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.MANAGE_DOCUMENTS},
+                        PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     @Override
@@ -184,16 +210,16 @@ public class AddBookActivity extends AppCompatActivity implements LoaderManager.
             return bitmap;
 
         } catch (FileNotFoundException fne) {
-            Log.e(LOG_TAG, "Failed to load image.", fne);
+            Log.e(LOG_TAG, "Failed to load image. " + fne);
             return null;
         } catch (Exception e) {
-            Log.e(LOG_TAG, "Failed to load image.", e);
+            Log.e(LOG_TAG, "Failed to load image. " + e);
             return null;
         } finally {
             try {
                 input.close();
             } catch (IOException ioe) {
-
+                Log.e(LOG_TAG, "IOException " + ioe);
             }
         }
     }
@@ -276,6 +302,7 @@ public class AddBookActivity extends AppCompatActivity implements LoaderManager.
         String bookQuantity = mQuantityEditText.getText().toString().trim();
         String bookSupplierPhoneNumber = mSupplierPhoneNumberEditText.getText().toString().trim();
         String bookImageUri = "";
+
         if (imageUri != null) {
             bookImageUri = imageUri.toString();
         }
@@ -503,5 +530,4 @@ public class AddBookActivity extends AppCompatActivity implements LoaderManager.
             Toast.makeText(getApplicationContext(), "Supplier doesn't have a contact number in the system.", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
