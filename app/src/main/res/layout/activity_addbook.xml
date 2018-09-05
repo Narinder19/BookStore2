@@ -15,8 +15,8 @@
             android:id="@+id/book_image"
             android:layout_width="@dimen/image_width"
             android:layout_height="@dimen/image_height"
-            app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/addimage"/>
+            android:src="@drawable/addimage"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/edit_book_name"
@@ -40,7 +40,7 @@
             android:spinnerMode="dropdown"
             app:layout_constraintLeft_toRightOf="@+id/category_text_view"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/book_image"/>
+            app:layout_constraintTop_toBottomOf="@+id/book_image" />
 
         <TextView
             android:id="@+id/price_text_view"

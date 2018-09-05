@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.bookstore">
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -24,9 +25,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".BookActivity" />
         </activity>
+
         <provider
-            android:authorities="com.example.android.bookstore"
             android:name=".data.BookProvider"
+            android:authorities="com.example.android.bookstore"
             android:exported="false" />
     </application>
 

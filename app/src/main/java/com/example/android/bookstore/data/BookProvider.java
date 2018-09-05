@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.android.bookstore.data.BookContract.BookEntry;
@@ -95,7 +94,6 @@ public class BookProvider extends ContentProvider {
         } else {
             return ContentUris.withAppendedId(uri, newRowId);
         }
-
     }
 
     private void checkContentValues(ContentValues values) {
@@ -130,14 +128,14 @@ public class BookProvider extends ContentProvider {
             }
         }
         if (values.containsKey(BookEntry.COLUMN_BOOK_SUPPLIERPHONENUMBER)) {
-            String supplierPhone= values.getAsString(BookEntry.COLUMN_BOOK_SUPPLIERPHONENUMBER);
-            if (supplierPhone == null ) {
+            String supplierPhone = values.getAsString(BookEntry.COLUMN_BOOK_SUPPLIERPHONENUMBER);
+            if (supplierPhone == null) {
                 throw new IllegalArgumentException("Book supplier phone is invalid. ");
             }
         }
-        if(values.containsKey(BookEntry.COLUMN_BOOK_IMAGE_URI)){
+        if (values.containsKey(BookEntry.COLUMN_BOOK_IMAGE_URI)) {
             String bookImageUri = values.getAsString(BookEntry.COLUMN_BOOK_IMAGE_URI);
-            if(bookImageUri == null ){
+            if (bookImageUri == null) {
                 throw new IllegalArgumentException("Book image is invalid. ");
             }
         }

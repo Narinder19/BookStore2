@@ -33,9 +33,9 @@ public final class BookContract {
         public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_BOOKS;
 
         //Returns whether book category is valid or not.
-        public static boolean  isValidCategory(int category){
-            if(category == CATEGORY_FICTION || category ==CATEGORY_HISTORY ||
-                    category == CATEGORY_TECHNOLOGY || category == CATEGORY_UNKNOWN){
+        public static boolean isValidCategory(int category) {
+            if (category == CATEGORY_FICTION || category == CATEGORY_HISTORY ||
+                    category == CATEGORY_TECHNOLOGY || category == CATEGORY_UNKNOWN) {
                 return true;
             }
             return false;

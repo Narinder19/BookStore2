@@ -198,7 +198,7 @@ public class AddBookActivity extends AppCompatActivity implements LoaderManager.
         }
     }
 
-    private void setupSpinner(){
+    private void setupSpinner() {
         //Create an ArrayAdaptar from the String array
         ArrayAdapter categorySpinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.book_categories, android.R.layout.simple_spinner_item);
