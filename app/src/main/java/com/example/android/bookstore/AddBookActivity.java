@@ -346,6 +346,10 @@ public class AddBookActivity extends AppCompatActivity implements LoaderManager.
         }
         if (!TextUtils.isEmpty(bookSupplierPhoneNumber)) {
             values.put(BookEntry.COLUMN_BOOK_SUPPLIERPHONENUMBER, mSupplierPhoneNumberEditText.getText().toString());
+        }else{
+            mSupplierPhoneNumberEditText.setError("Supplier Number required");
+            Error = true;
+            return;
         }
         if (!TextUtils.isEmpty(bookImageUri)) {
             values.put(BookEntry.COLUMN_BOOK_IMAGE_URI, bookImageUri);
